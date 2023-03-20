@@ -23,11 +23,11 @@ namespace ConversionAPI.Controllers
         /// <param name="apiUrl"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] string apiUrl)
+        public async Task<IActionResult> GetAll([FromQuery] string apiUrl, [FromQuery] string type)
         {
             try
             {
-                String conversion = await _conversionProcessor.GetAll(apiUrl);
+                String conversion = await _conversionProcessor.GetAll(apiUrl, type);
                 return Ok(conversion);
             }
             catch (Exception ex)

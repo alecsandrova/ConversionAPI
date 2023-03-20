@@ -2,6 +2,6 @@
 {
     public interface IConversionProcessor
     {
-        Task<String> GetAll(string apiUrl);
+        Task<String> GetAll(string apiUrl, string type);
     }
 }

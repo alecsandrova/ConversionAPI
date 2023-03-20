@@ -31,3 +31,5 @@ D:\02_PROJECTS\ConversionAPI\ConversionAPI\obj\Debug\net6.0\refint\ConversionAPI
 D:\02_PROJECTS\ConversionAPI\ConversionAPI\obj\Debug\net6.0\ConversionAPI.pdb
 D:\02_PROJECTS\ConversionAPI\ConversionAPI\obj\Debug\net6.0\ConversionAPI.genruntimeconfig.cache
 D:\02_PROJECTS\ConversionAPI\ConversionAPI\obj\Debug\net6.0\ref\ConversionAPI.dll
+D:\02_PROJECTS\ConversionAPI\ConversionAPI\bin\Debug\net6.0\Antlr3.Runtime.dll
+D:\02_PROJECTS\ConversionAPI\ConversionAPI\bin\Debug\net6.0\WebGrease.dll
