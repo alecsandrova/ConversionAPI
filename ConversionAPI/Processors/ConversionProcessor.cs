@@ -1,20 +1,11 @@
 ﻿using ConversionAPI.Services;
-using CsvHelper;
-using CsvHelper.Configuration;
-using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using System.Data;
-using System.Globalization;
-using System.Text.Json.Nodes;
-using SuperConvert.Extensions;
 using System.Xml.Linq;
-using Newtonsoft;
-using Newtonsoft.Json;
-using CsvHelper;
-using System.IO;
 using System.Text;
+using System.Xml;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace ConversionAPI.Processors
 {
@@ -78,9 +69,26 @@ namespace ConversionAPI.Processors
 
                 if (type.ToLower() == "xml")
                 {
-                    jsonString = jsonString.Substring(1,jsonString.Length - 2); 
-                    var xml = JsonToXml(jsonString);
-                    return xml;
+                    JArray jsonArray = JArray.Parse(jsonString);
+
+                    XmlDocument xmlDocument = new XmlDocument();
+                    XmlElement rootNode = xmlDocument.CreateElement("root");
+                    xmlDocument.AppendChild(rootNode);
+
+                    foreach (JObject jsonObject in jsonArray)
+                    {
+                        XmlElement rowNode = xmlDocument.CreateElement("row");
+                        foreach (KeyValuePair<string, JToken> property in jsonObject)
+                        {
+                            XmlElement propertyNode = xmlDocument.CreateElement(property.Key);
+                            propertyNode.InnerText = property.Value.ToString();
+                            rowNode.AppendChild(propertyNode);
+                        }
+                        rootNode.AppendChild(rowNode);
+                    }
+
+                    string xmlString = xmlDocument.OuterXml;
+                    return xmlString;
                 }
 
 
