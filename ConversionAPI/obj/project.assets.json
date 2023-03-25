@@ -11,6 +11,19 @@
           "lib/Antlr3.Runtime.dll": {}
         }
       },
+      "CsvHelper/30.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/CsvHelper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/CsvHelper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
         "type": "package",
         "build": {
@@ -53,6 +66,15 @@
           "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "SuperConvert/1.0.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SuperConvert.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/SuperConvert.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/6.2.3": {
@@ -145,6 +167,30 @@
         "antlr.nuspec",
         "lib/Antlr3.Runtime.dll",
         "lib/Antlr3.Runtime.pdb"
+      ]
+    },
+    "CsvHelper/30.0.1": {
+      "sha512": "rcZtgbWR+As4G3Vpgx0AMNmShGuQLFjkHAPIIflzrfkJCx8/AOd4m96ZRmiU1Wi39qS5UVjV0P8qdgqOo5Cwyg==",
+      "type": "package",
+      "path": "csvhelper/30.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "csvhelper.30.0.1.nupkg.sha512",
+        "csvhelper.nuspec",
+        "lib/net45/CsvHelper.dll",
+        "lib/net45/CsvHelper.xml",
+        "lib/net47/CsvHelper.dll",
+        "lib/net47/CsvHelper.xml",
+        "lib/net5.0/CsvHelper.dll",
+        "lib/net5.0/CsvHelper.xml",
+        "lib/net6.0/CsvHelper.dll",
+        "lib/net6.0/CsvHelper.xml",
+        "lib/netstandard2.0/CsvHelper.dll",
+        "lib/netstandard2.0/CsvHelper.xml",
+        "lib/netstandard2.1/CsvHelper.dll",
+        "lib/netstandard2.1/CsvHelper.xml"
       ]
     },
     "Microsoft.Extensions.ApiDescription.Server/3.0.0": {
@@ -302,6 +348,22 @@
         "packageIcon.png"
       ]
     },
+    "SuperConvert/1.0.4.2": {
+      "sha512": "Mp7efq1N8dIiNnMDHZitM1Ywv9J5Qp8MMIhe+puqQXQMnZg+ed3ELpgb8/G9YyTlhSbfzp6/189BZFInI/j92w==",
+      "type": "package",
+      "path": "superconvert/1.0.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "electric-generator.png",
+        "lib/net5.0/SuperConvert.dll",
+        "lib/net6.0/SuperConvert.dll",
+        "lib/net7.0/SuperConvert.dll",
+        "lib/netcoreapp3.1/SuperConvert.dll",
+        "superconvert.1.0.4.2.nupkg.sha512",
+        "superconvert.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.2.3": {
       "sha512": "cnzQDn0Le+hInsw2SYwlOhOCPXpYi/szcvnyqZJ12v+QyrLBwAmWXBg6RIyHB18s/mLeywC+Rg2O9ndz0IUNYQ==",
       "type": "package",
@@ -400,8 +462,10 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "CsvHelper >= 30.0.1",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.2",
       "Newtonsoft.Json >= 13.0.3",
+      "SuperConvert >= 1.0.4.2",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "WebGrease >= 1.6.0"
     ]
@@ -445,6 +509,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "CsvHelper": {
+            "target": "Package",
+            "version": "[30.0.1, )"
+          },
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
             "target": "Package",
             "version": "[1.17.2, )"
@@ -452,6 +520,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "SuperConvert": {
+            "target": "Package",
+            "version": "[1.0.4.2, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

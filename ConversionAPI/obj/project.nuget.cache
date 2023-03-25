@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "VjXsLXvZMYkNWgcbvEPh763sVy+JE9YczpdJK12jSynFzBo22RJK0CIVivhgkW1uxCa6qql1Pxo+IHvTKuvA7A==",
+  "dgSpecHash": "06PhzKYLbH2QIPrKD+L1jikkr2cE+j5VlJheUJ+YsDAl/ToFwYyKFUkJGeiwdrGWNsDjYu3isHiR05HMXtmIGA==",
   "success": true,
   "projectFilePath": "D:\\02_PROJECTS\\ConversionAPI\\ConversionAPI\\ConversionAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\neagu\\.nuget\\packages\\antlr\\3.4.1.9004\\antlr.3.4.1.9004.nupkg.sha512",
+    "C:\\Users\\neagu\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\neagu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\neagu\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\neagu\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
     "C:\\Users\\neagu\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\neagu\\.nuget\\packages\\superconvert\\1.0.4.2\\superconvert.1.0.4.2.nupkg.sha512",
     "C:\\Users\\neagu\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\neagu\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\neagu\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

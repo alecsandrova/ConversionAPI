@@ -33,3 +33,5 @@ D:\02_PROJECTS\ConversionAPI\ConversionAPI\obj\Debug\net6.0\ConversionAPI.genrun
 D:\02_PROJECTS\ConversionAPI\ConversionAPI\obj\Debug\net6.0\ref\ConversionAPI.dll
 D:\02_PROJECTS\ConversionAPI\ConversionAPI\bin\Debug\net6.0\Antlr3.Runtime.dll
 D:\02_PROJECTS\ConversionAPI\ConversionAPI\bin\Debug\net6.0\WebGrease.dll
+D:\02_PROJECTS\ConversionAPI\ConversionAPI\bin\Debug\net6.0\CsvHelper.dll
+D:\02_PROJECTS\ConversionAPI\ConversionAPI\bin\Debug\net6.0\SuperConvert.dll
