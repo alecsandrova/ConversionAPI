@@ -21,40 +21,8 @@ namespace ConversionAPI.Processors
         {
             try
             {
-                var conversion = await _conversionService.GetAll(apiUrl);
-                JArray objectList = (JArray)conversion["@list"];
-                foreach (JObject obj in objectList)
-                {
-                    if (obj.TryGetValue("@Id", out JToken idToken))
-                    {
-                        obj.Remove("@Id");
-                        obj.AddFirst(new JProperty("Id", idToken));
-                    }
-                    List<JProperty> propertiesToRemove = new List<JProperty>();
-                    foreach (JProperty prop in obj.Properties().ToList())
-                    {
-                        if (prop.Name.StartsWith("@"))
-                        {
-                            string newName = prop.Name.Substring(1);
-                            propertiesToRemove.Add(prop);
-                            obj.Add(newName, prop.Value);
-                        }
-                    }
-                    foreach (JProperty prop in propertiesToRemove)
-                    {
-                        prop.Remove();
-                    }
-                    
-                }
-
-                string jsonString = JsonConvert.SerializeObject(objectList, Formatting.Indented, new JsonSerializerSettings
-                {
-                    ContractResolver = new DefaultContractResolver
-                    {
-                        NamingStrategy = new CamelCaseNamingStrategy()
-                    }
-                });
-
+                var jsonld = await _conversionService.GetAll(apiUrl);
+                var jsonString = ConvertJsonLdToJson(jsonld);
 
                 if (type.ToLower() == "json")
                 {
@@ -69,30 +37,12 @@ namespace ConversionAPI.Processors
 
                 if (type.ToLower() == "xml")
                 {
-                    JArray jsonArray = JArray.Parse(jsonString);
-
-                    XmlDocument xmlDocument = new XmlDocument();
-                    XmlElement rootNode = xmlDocument.CreateElement("root");
-                    xmlDocument.AppendChild(rootNode);
-
-                    foreach (JObject jsonObject in jsonArray)
-                    {
-                        XmlElement rowNode = xmlDocument.CreateElement("row");
-                        foreach (KeyValuePair<string, JToken> property in jsonObject)
-                        {
-                            XmlElement propertyNode = xmlDocument.CreateElement(property.Key);
-                            propertyNode.InnerText = property.Value.ToString();
-                            rowNode.AppendChild(propertyNode);
-                        }
-                        rootNode.AppendChild(rowNode);
-                    }
-
-                    string xmlString = xmlDocument.OuterXml;
+                    string xmlString = ConvertJsonToXml(jsonString);
                     return xmlString;
                 }
 
 
-                return conversion.ToString();
+                return "Unrecognized Type";
             }
             catch (Exception ex)
             {
@@ -100,11 +50,65 @@ namespace ConversionAPI.Processors
             }
         }
 
-        public static string JsonToXml(string json)
+        public static string ConvertJsonLdToJson(JObject jsonld)
         {
-            var doc = JsonConvert.DeserializeXNode(json)!;
-            var declaration = doc.Declaration ?? _defaultDeclaration;
-            return $"{declaration}{Environment.NewLine}{doc}";
+            JArray objectList = (JArray)jsonld["@list"];
+            foreach (JObject obj in objectList)
+            {
+                if (obj.TryGetValue("@Id", out JToken idToken))
+                {
+                    obj.Remove("@Id");
+                    obj.AddFirst(new JProperty("Id", idToken));
+                }
+                List<JProperty> propertiesToRemove = new List<JProperty>();
+                foreach (JProperty prop in obj.Properties().ToList())
+                {
+                    if (prop.Name.StartsWith("@"))
+                    {
+                        string newName = prop.Name.Substring(1);
+                        propertiesToRemove.Add(prop);
+                        obj.Add(newName, prop.Value);
+                    }
+                }
+                foreach (JProperty prop in propertiesToRemove)
+                {
+                    prop.Remove();
+                }
+
+            }
+
+            string jsonString = JsonConvert.SerializeObject(objectList, Formatting.Indented, new JsonSerializerSettings
+            {
+                ContractResolver = new DefaultContractResolver
+                {
+                    NamingStrategy = new CamelCaseNamingStrategy()
+                }
+            });
+            return jsonString;
+        }
+
+        public static string ConvertJsonToXml(string json)
+        {
+            JArray jsonArray = JArray.Parse(json);
+
+            XmlDocument xmlDocument = new XmlDocument();
+            XmlElement rootNode = xmlDocument.CreateElement("object-list");
+            xmlDocument.AppendChild(rootNode);
+
+            foreach (JObject jsonObject in jsonArray)
+            {
+                XmlElement rowNode = xmlDocument.CreateElement("object");
+                foreach (KeyValuePair<string, JToken> property in jsonObject)
+                {
+                    XmlElement propertyNode = xmlDocument.CreateElement(property.Key);
+                    propertyNode.InnerText = property.Value.ToString();
+                    rowNode.AppendChild(propertyNode);
+                }
+                rootNode.AppendChild(rowNode);
+            }
+
+            string xmlString = xmlDocument.OuterXml;
+            return xmlString;
         }
 
         public static string ConvertJsonToCsv(string json)
