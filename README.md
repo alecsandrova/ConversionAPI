@@ -1,5 +1,5 @@
 # ConversionMicroservice 
-The **ConversionMicroservice** is part of a university project involving Dataspaces. This API is designed to convert data from JsonLD format to other formats, such as JSON to CSV or XML.
+The **ConversionMicroservice** is part of a university project involving Dataspaces. This API is designed to convert data from JsonLD format to other formats, such as JSON, CSV or XML.
 
 ## Technologies
 The ConversionMicroservice API is built using the following technologies:
