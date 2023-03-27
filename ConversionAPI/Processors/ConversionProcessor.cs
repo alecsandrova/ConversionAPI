@@ -107,7 +107,7 @@ namespace ConversionAPI.Processors
                 rootNode.AppendChild(rowNode);
             }
 
-            string xmlString = xmlDocument.OuterXml;
+            string xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +  xmlDocument.OuterXml;
             return xmlString;
         }
 
